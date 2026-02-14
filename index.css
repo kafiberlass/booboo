@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap');
+
+:root {
+  --secondary-color: #780000;
+  --main-font: "Darumadrop One", serif;
+}
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-style: normal;
+  min-width: 300px;
+}
+
+body {
+  background: linear-gradient(135deg, #ffebf3 0%, #ffe5ef 35%, #ffe8f1 70%, #ffdce9 100%);
+  background-attachment: fixed;
+}
+
+img {
+  image-rendering: pixelated;
+}
+
+h1 {
+  color: red;
+  -webkit-text-stroke: 0.5px var(--secondary-color);
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(135deg, #ffebf3 0%, #ffe5ef 35%, #ffe8f1 70%, #ffdce9 100%);
+}
+
+.content-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container img {
+  width: 75%;
+  height: auto;
+  max-width: 700px;
+  max-height: 700px;
+}
+
+.buttons-container {
+  margin: 2rem;
+  display: grid;
+  width: 100%;
+  max-width: 200px;
+  grid-template-columns: auto auto;
+  grid-gap: 2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-container button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-family: var(--main-font);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  width: 95px;
+  height: 95px;
+}
+
+.buttons-container button:focus {
+  outline: none;
+}
+
+.buttons-container button .heart-shape {
+  width: 70px;
+  height: 70px;
+  background: red;
+  transform: rotate(45deg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s, border 0.2s;
+  border: none;
+  box-shadow: none;
+}
+
+.buttons-container button .heart-shape::before,
+.buttons-container button .heart-shape::after {
+  content: '';
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: inherit;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.buttons-container button .heart-shape::before {
+  top: -35px;
+  left: 0;
+}
+
+.buttons-container button .heart-shape::after {
+  left: -35px;
+  top: 0;
+}
+
+.buttons-container button .heart-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.buttons-container button:hover .heart-shape,
+.buttons-container button:hover .heart-shape::before,
+.buttons-container button:hover .heart-shape::after {
+  background: white;
+}
+
+.buttons-container button:hover {
+  color: red;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.6));
+}
+
+.buttons-container button:hover .heart-shape {
+  border: 3px solid red;
+  box-shadow: 0 2px 12px rgba(120, 0, 0, 0.3);
+}
+
+.buttons-container button:active .heart-shape,
+.buttons-container button:active .heart-shape::before,
+.buttons-container button:active .heart-shape::after {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.buttons-container button:active {
+  color: white;
+}
+
+.stars-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  color: #e8a0b8;
+  text-shadow: 
+    0 0 3px rgba(200, 100, 130, 0.9),
+    0 1px 2px rgba(180, 80, 110, 0.6),
+    0 0 10px rgba(255, 182, 193, 0.4);
+  animation: starTwinkle 2.5s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+.container > h1,
+.content-block {
+  position: relative;
+  z-index: 1;
+}
+
+.flowerPetals {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.flowerPetals img {
+  height: 100%;
+  width: 100%;
+}
+
+@media (1250px <= width) {
+  h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (650px >= width) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 1rem;
+  }
+
+  .buttons-container button .heart-shape,
+  .buttons-container button .heart-shape::before,
+  .buttons-container button .heart-shape::after {
+    width: 55px;
+    height: 55px;
+  }
+
+  .buttons-container button .heart-shape::before {
+    top: -27.5px;
+  }
+
+  .buttons-container button .heart-shape::after {
+    left: -27.5px;
+  }
+
+  .buttons-container button {
+    width: 75px;
+    height: 75px;
+  }
+
+  .buttons-container button .heart-text {
+    font-size: 0.75rem;
+  }
+}
